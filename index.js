@@ -6,11 +6,12 @@ import allReviewText from "./src/data/AllReviewTexts.js";
 
 import { getRandomList, getRandomBoolean } from "./src/data/helpers.js";
 
+import Cart from "./src/model/Cart.js";
 import IdGenerator from "./src/model/IdGenerator.js";
 import User from "./src/model/User.js";
 import Review from "./src/model/Review.js";
 import PageInfo from "./src/model/PageInfo.js";
-import { DraftUser, DraftPurchase, CardInfo, DraftReview } from "./src/model/Drafts.js";
+import { DraftUser, DraftPurchase, DraftReview } from "./src/model/Drafts.js";
 
 /**
  * Get a paginated list of elements.
@@ -371,8 +372,10 @@ class GogSystem {
     if (cart.games.length === 0) {
       throw new PurchaseException("Cart is empty");
     }
-
+    
     user.games.push(...cart.games);
+    this.carts = this.carts.filter((c) => c.user !== user);
+
     return user;
   }
 
@@ -424,11 +427,16 @@ function initGogSystem() {
 
   gog.users.forEach((user) => {
     getRandomList(random, gog.games, 40).forEach((game) => {
-      gog.purchaseGame(
+      gog.addGameToCart(
         user.id,
-        new DraftPurchase(game.id, new CardInfo("a", 1234, new Date(), 123))
+        game.id,
       );
     });
+
+    gog.purchase(
+      user.id,
+      new DraftPurchase("1111222233334444", "John Doe", new Date(), "123"),
+    );
 
     getRandomList(random, gog.users, 5).forEach((friend) => {
       if (user.id !== friend.id) {
