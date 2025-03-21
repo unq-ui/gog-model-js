@@ -13,6 +13,16 @@ import Review from "./src/model/Review.js";
 import PageInfo from "./src/model/PageInfo.js";
 import { DraftUser, DraftPurchase, DraftReview } from "./src/model/Drafts.js";
 
+import UserException from "./src/exceptions/UserException.js";
+import NotFoundTag from "./src/exceptions/NotFoundTag.js";
+import NotFoundUser from "./src/exceptions/NotFoundUser.js";
+import NotFoundGame from "./src/exceptions/NotFoundGame.js";
+import NotFoundDeveloper from "./src/exceptions/NotFoundDeveloper.js";
+import ReviewException from "./src/exceptions/ReviewException.js";
+import PageException from "./src/exceptions/PageException.js";
+import PurchaseException from "./src/exceptions/PurchaseException.js";
+import CartException from "./src/exceptions/CartException.js";
+
 /**
  * Get a paginated list of elements.
  *
