@@ -319,13 +319,14 @@ class GogSystem {
     if (user.games.includes(game)) {
       throw new PurchaseException("You already have the game");
     }
-
     let cart = this.carts.find((cart) => cart.user === user);
     if (!cart) {
       cart = new Cart(user);
       this.carts.push(cart);
     }
-    cart.games.push(game);
+    if (!cart.games.includes(game)) {
+      cart.games.push(game);
+    }
     return cart;
   }
 
@@ -357,8 +358,11 @@ class GogSystem {
 
 
   /**
- * Get cart.
- */
+   * Get cart.
+   * @param {string} userId The ID of the user who is purchasing the game.
+   * @return {Cart}
+   * @throws {NotFoundUser} If the user with the given ID does not exist.
+   */
   getCart(userId) {
     const user = this.getUser(userId);
     const cart = this.carts.find((cart) => cart.user === user) || new Cart(user);
