@@ -54,6 +54,13 @@ class PageException extends Error {
   }
 }
 
+class CartException extends Error {
+  constructor(msg) {
+    super(msg);
+    this.name = "CartException";
+  }
+}
+
 export {
   NotFoundUser,
   NotFoundDeveloper,
@@ -62,5 +69,6 @@ export {
   ReviewException,
   UserException,
   PurchaseException,
-  PageException
+  PageException,
+  CartException
 };
