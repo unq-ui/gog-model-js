@@ -51,13 +51,13 @@ function getPage(list, page) {
 }
 
 function validCardInfo(card) {
-  if (card.cardNumber.length !== 16) {
+  if (card.cardNumber.length < 16) {
     throw new PurchaseException("Card number must be 16 digits");
   }
   if (card.cardHolderName.length < 2) {
     throw new PurchaseException("Card holder name must be at least 2 characters");
   }
-  if (card.cvv.length !== 3) {
+  if (card.cvv.length < 3) {
     throw new PurchaseException("CVV must be 3 digits");
   }
 }
@@ -385,7 +385,7 @@ class GogSystem {
     const user = this.getUser(userId);
     const cart = this.getCart(userId);
 
-    if (cart.games.length === 0) {
+    if (cart.games.length = 0) {
       throw new PurchaseException("Cart is empty");
     }
     
