@@ -385,7 +385,7 @@ class GogSystem {
     const user = this.getUser(userId);
     const cart = this.getCart(userId);
 
-    if (cart.games.length = 0) {
+    if (cart.games.length == 0) {
       throw new PurchaseException("Cart is empty");
     }
     
