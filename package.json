@@ -1,6 +1,6 @@
 {
   "name": "@unq-ui/gog-model-js",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "Gog model implementation in JavaScript",
   "main": "index.js",
   "type": "module",
@@ -12,5 +12,8 @@
     "start": "node index.js"
   },
   "author": "Tomas Hurrell <hurrelltomas@gmail.com> (https://github.com/HurrellT)",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "rand-seed": "^2.1.7"
+  }
 }

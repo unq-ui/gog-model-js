@@ -431,7 +431,7 @@ class GogSystem {
 }
 
 function initGogSystem() {
-  const random = Math.random();
+  const random = new Rand('gog-system');
 
   const games = getAllGamesData(random).sort((a, b) => {
     return b.releaseDate.getTime() - a.releaseDate.getTime();

@@ -34,6 +34,7 @@ function getESRB(name) {
 }
 
 function getRandom(random, from, to) {
+  random.next();
   return random * (to - from) + from;
 }
 
@@ -46,6 +47,7 @@ function getDate(date) {
 }
 
 function getRandomList(random, list, amountOfElements) {
+  random.next();
   const indices = new Set();
   for (let i = 0; i < amountOfElements && indices.size < list.length; i++) {
     indices.add(Math.floor(random * list.length));
@@ -54,6 +56,7 @@ function getRandomList(random, list, amountOfElements) {
 }
 
 function getRandomBoolean(random) {
+  random.next();
   return random < 0.5;
 }
 
