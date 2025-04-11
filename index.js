@@ -13,6 +13,8 @@ import Review from "./src/model/Review.js";
 import PageInfo from "./src/model/PageInfo.js";
 import { DraftUser, DraftPurchase, DraftReview } from "./src/model/Drafts.js";
 
+import Rand from 'rand-seed';
+
 import {
   NotFoundUser,
   NotFoundDeveloper,
